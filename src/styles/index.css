@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    @apply bg-dark-darker text-white;
+    font-family: 'Inter', sans-serif;
+    background-image: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, rgba(17, 24, 39, 0) 70%);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-300 shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-dark text-white hover:shadow-neon hover:translate-y-[-2px];
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary to-secondary-dark text-white hover:shadow-neon-purple hover:translate-y-[-2px];
+  }
+  
+  .card {
+    @apply bg-dark rounded-xl p-6 shadow-lg transition-all duration-300 border border-gray-800 backdrop-blur-sm;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-neon hover:-translate-y-1 hover:scale-105 hover:border-primary/30;
+  }
+  
+  .input {
+    @apply bg-dark-lighter text-white border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary shadow-inner;
+  }
+}
+
+/* Градиентный фон */
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+}
+
+.bg-gradient-neon {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+}
+
+/* Неоновый текст */
+.text-neon {
+  text-shadow: 0 0 5px #3B82F6, 0 0 20px #3B82F6;
+}
+
+.text-neon-purple {
+  text-shadow: 0 0 5px #8B5CF6, 0 0 20px #8B5CF6;
+}
+
+/* Анимации */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Анимация для логотипа - плавное движение */
+@keyframes logo-float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-logo-float {
+  animation: logo-float 4s ease-in-out infinite;
+}
+
+/* Анимация для логотипа - медленное вращение */
+@keyframes logo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-logo-spin {
+  animation: logo-spin 6s ease-in-out infinite;
+}
+
+/* Добавляем новую анимацию fadeIn */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Улучшенные стили для шапки */
+header {
+  @apply border-b border-gray-800 backdrop-blur-sm;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.9) 100%);
+}
+
+/* Улучшенные стили для футера */
+footer {
+  @apply border-t border-gray-800 backdrop-blur-sm;
+  background: linear-gradient(0deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.9) 100%);
+}
+
+/* Стили для баннера лучшего промоутера */
+.top-promoter-banner {
+  background: linear-gradient(135deg, rgba(109, 40, 217, 0.8) 0%, rgba(139, 92, 246, 0.8) 100%);
+  @apply border border-secondary/50 backdrop-blur-md;
+}
+
+/* Стили для карточек промоутеров */
+.promoter-card {
+  background: rgba(31, 41, 55, 0.7);
+  @apply backdrop-blur-sm border border-gray-800 hover:border-primary/30;
+}
+
+/* Стили для рейтинга */
+.rank-badge {
+  @apply absolute -top-3 -left-3 w-8 h-8 rounded-full flex items-center justify-center font-bold border-2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.rank-1 {
+  @apply text-yellow-400 border-yellow-400 bg-dark-darker;
+  text-shadow: 0 0 5px rgba(250, 204, 21, 0.5);
+}
+
+.rank-2 {
+  @apply text-gray-300 border-gray-300 bg-dark-darker;
+}
+
+.rank-3 {
+  @apply text-amber-600 border-amber-600 bg-dark-darker;
+} 
