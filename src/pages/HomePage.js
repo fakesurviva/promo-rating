@@ -713,7 +713,7 @@ function HomePage() {
                 <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
                   <span className="text-primary">1</span>
                 </div>
-                <p>Свяжитесь с нашим менеджером в Telegram: <a href="https://t.me/manager" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@manager</a></p>
+                <p>Свяжитесь с нашим менеджером в Telegram: <a href="https://t.me/LevelUpPTZ" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@LevelUpPTZ</a></p>
               </div>
               
               <div className="flex items-start gap-4">
@@ -740,7 +740,7 @@ function HomePage() {
             
             <div className="mt-8 text-center">
               <a 
-                href="https://t.me/manager" 
+                href="https://t.me/LevelUpPTZ" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-block px-8 py-3 bg-gradient-to-r from-primary to-secondary rounded-lg font-medium text-white transition-all duration-300 hover:shadow-neon transform hover:-translate-y-1"
