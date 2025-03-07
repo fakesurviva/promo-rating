@@ -6,8 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build",
-        "installCommand": "npm install",
-        "buildCommand": "chmod +x ./node_modules/.bin/react-scripts && CI=false npm run build"
+        "buildCommand": "CI=false npm run build"
       }
     }
   ],
@@ -28,5 +27,9 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "NPM_FLAGS": "--no-audit --no-fund",
+    "NODE_OPTIONS": "--max_old_space_size=4096"
+  }
 } 
