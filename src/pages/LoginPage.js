@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaLock, FaEnvelope } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
+import levelupIcon from '../assets/images/levelup-icon.png';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -117,7 +119,7 @@ const LoginPage = () => {
                   <div className="absolute -inset-2 bg-gradient-to-r from-secondary/30 to-primary/30 rounded-full blur-lg opacity-80 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                   <div className="relative animate-logo-float">
                     <img 
-                      src={`${process.env.PUBLIC_URL}/images/levelup-icon.png`}
+                      src={levelupIcon}
                       alt="LevelUp Icon" 
                       className="w-16 h-16 object-contain animate-logo-spin" 
                     />

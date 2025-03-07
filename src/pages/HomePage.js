@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { collection, query, orderBy, limit, getDocs, where } from 'firebase/firestore';
 import { db } from '../firebase/config';
+import { motion } from 'framer-motion';
+import { useAuth } from '../context/AuthContext';
+import { getTopPromoters, getSettings } from '../firebase/promoterService';
+import PromoterCard from '../components/PromoterCard';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { toast } from 'react-toastify';
+import levelupIcon from '../assets/images/levelup-icon.png';
 
 function HomePage() {
   const [isHovered, setIsHovered] = useState(false);
@@ -170,7 +178,7 @@ function HomePage() {
                   <div className="absolute -inset-2 bg-gradient-to-r from-secondary/30 to-primary/30 rounded-full blur-lg opacity-80 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                   <div className="relative animate-logo-float">
                     <img 
-                      src={`${process.env.PUBLIC_URL}/images/levelup-icon.png`}
+                      src={levelupIcon}
                       alt="LevelUp Icon" 
                       className="w-16 h-16 object-contain animate-logo-spin" 
                     />
