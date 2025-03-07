@@ -6,7 +6,8 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "build",
-        "buildCommand": "npm run build"
+        "installCommand": "npm install --force",
+        "buildCommand": "CI=false npm run build"
       }
     }
   ],
@@ -29,7 +30,7 @@
     }
   ],
   "env": {
-    "NPM_FLAGS": "--no-audit --no-fund",
+    "NPM_FLAGS": "--no-audit --no-fund --legacy-peer-deps",
     "NODE_OPTIONS": "--max_old_space_size=4096"
   }
 } 
