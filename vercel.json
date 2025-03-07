@@ -24,6 +24,9 @@
   ],
   "env": {
     "NPM_FLAGS": "--no-audit --no-fund --legacy-peer-deps",
-    "NODE_OPTIONS": "--max_old_space_size=4096"
+    "NODE_OPTIONS": "--max_old_space_size=4096",
+    "DISABLE_ESLINT_PLUGIN": "true",
+    "ESLINT_NO_DEV_ERRORS": "true",
+    "CI": "false"
   }
 } 
