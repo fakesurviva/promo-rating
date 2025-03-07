@@ -1,16 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build",
-        "installCommand": "npm install --force && chmod +x ./node_modules/.bin/react-scripts",
-        "buildCommand": "npm run vercel-build"
-      }
-    }
-  ],
+  "framework": "create-react-app",
+  "buildCommand": "npm run vercel-build",
+  "devCommand": "npm start",
+  "installCommand": "npm install --force && chmod +x ./node_modules/.bin/react-scripts",
+  "outputDirectory": "build",
   "routes": [
     {
       "src": "/static/(.*)",
