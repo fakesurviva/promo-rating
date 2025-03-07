@@ -170,7 +170,7 @@ function HomePage() {
                   <div className="absolute -inset-2 bg-gradient-to-r from-secondary/30 to-primary/30 rounded-full blur-lg opacity-80 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                   <div className="relative animate-logo-float">
                     <img 
-                      src="/images/levelup-icon.png" 
+                      src={`${process.env.PUBLIC_URL}/images/levelup-icon.png`}
                       alt="LevelUp Icon" 
                       className="w-16 h-16 object-contain animate-logo-spin" 
                     />
