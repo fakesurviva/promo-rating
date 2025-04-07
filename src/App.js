@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
+import AnimatedBackground from './components/AnimatedBackground';
 
 // Импорт страниц
 import HomePage from './pages/HomePage';
@@ -20,8 +21,11 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
+  const { currentUser } = useAuth();
+  
   return (
     <div className="min-h-screen bg-gradient-dark">
+      {!currentUser && <AnimatedBackground />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
