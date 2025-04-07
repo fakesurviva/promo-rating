@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaUsers, FaTrophy, FaCog, FaTelegram } from 'react-icons/fa';
-import { getPromoters, getTopPromoter } from '../../firebase/promoterService';
+import { FaUsers, FaTrophy, FaCog, FaTelegram, FaEraser } from 'react-icons/fa';
+import { getPromoters, getTopPromoter, resetAllPromotersStats } from '../../firebase/promoterService';
 import { getTelegramConfig } from '../../firebase/telegramService';
+import { toast } from 'react-toastify';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -12,6 +13,7 @@ const AdminDashboard = () => {
     telegramEnabled: false
   });
   const [loading, setLoading] = useState(true);
+  const [resetting, setResetting] = useState(false);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +43,25 @@ const AdminDashboard = () => {
     
     fetchData();
   }, []);
+  
+  // Функция сброса статистики
+  const handleResetStats = async () => {
+    if (!window.confirm('Вы уверены, что хотите сбросить статистику всех промоутеров? Это действие нельзя отменить.')) {
+      return;
+    }
+    
+    try {
+      setResetting(true);
+      await resetAllPromotersStats();
+      await fetchData(); // Обновляем данные после сброса
+      toast.success('Статистика успешно сброшена');
+    } catch (error) {
+      console.error('Ошибка при сбросе статистики:', error);
+      toast.error('Не удалось сбросить статистику');
+    } finally {
+      setResetting(false);
+    }
+  };
   
   // Карточки с информацией
   const cards = [
@@ -225,6 +246,35 @@ const AdminDashboard = () => {
               </Link>
             </motion.div>
           </div>
+        </motion.div>
+        
+        {/* Карточка сброса статистики */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="bg-dark/50 backdrop-blur-xl rounded-xl p-6 border border-white/10"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-semibold text-white">Сброс статистики</h3>
+            <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
+              <FaEraser className="text-red-500" />
+            </div>
+          </div>
+          
+          <p className="text-gray-400 mb-4">
+            Сброс количества листовок и дней работы у всех промоутеров.
+          </p>
+          
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleResetStats}
+            disabled={resetting}
+            className={`w-full px-4 py-2 rounded-lg text-white bg-gradient-to-r from-red-500 to-red-600 hover:shadow-lg hover:shadow-red-500/20 transition-all ${resetting ? 'opacity-50 cursor-not-allowed' : ''}`}
+          >
+            {resetting ? 'Сброс...' : 'Сбросить статистику'}
+          </motion.button>
         </motion.div>
       </div>
     </div>

@@ -234,4 +234,28 @@ export const updateSettings = async (settingsData, logoFile) => {
     console.error('Ошибка при обновлении настроек:', error);
     throw error;
   }
+};
+
+// Сбросить статистику всех промоутеров
+export const resetAllPromotersStats = async () => {
+  try {
+    const promoters = await getPromoters();
+    
+    // Обновляем каждого промоутера
+    const updatePromises = promoters.map(promoter => {
+      const promoterRef = doc(db, 'promoters', promoter.id);
+      return updateDoc(promoterRef, {
+        leafletsCount: 0,
+        workDays: 0,
+        speed: 0,
+        updatedAt: serverTimestamp()
+      });
+    });
+    
+    await Promise.all(updatePromises);
+    return true;
+  } catch (error) {
+    console.error('Ошибка при сбросе статистики:', error);
+    throw error;
+  }
 }; 
